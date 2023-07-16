@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4655170902764924810}
   - component: {fileID: 5609834968834038876}
   - component: {fileID: 4085725679336724422}
-  - component: {fileID: 680023767760549524}
+  - component: {fileID: 921683973694210691}
   m_Layer: 5
   m_Name: GridBuffer
   m_TagString: Untagged
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1037130383, guid: 2f36c621f93de4fca99ee6974c5f630c, type: 3}
+  m_Sprite: {fileID: -349418092, guid: 2f36c621f93de4fca99ee6974c5f630c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &680023767760549524
+--- !u!114 &921683973694210691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,9 +86,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2590648485872283927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b16d56891a57e40ad9e306725b1a65ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 28527cfa68a9049d087e2d42ba11e455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOnStart: 0
-  themeType: 1
-  themeTarget: 2
+  type: 1
+  colorizeLayer: 1
+  text: {fileID: 0}
+  image: {fileID: 4085725679336724422}

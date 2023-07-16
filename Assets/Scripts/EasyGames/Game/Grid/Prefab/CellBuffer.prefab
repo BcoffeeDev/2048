@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 434251269823078575}
   - component: {fileID: 6021320944442689300}
   - component: {fileID: 8339287954915742255}
-  - component: {fileID: 4338998805836424301}
+  - component: {fileID: 3946344825284330949}
   m_Layer: 5
   m_Name: Text - Value
   m_TagString: Untagged
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4338998805836424301
+--- !u!114 &3946344825284330949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,11 +145,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3744830822520932869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 814cb265c317d49edb2efae011f75560, type: 3}
+  m_Script: {fileID: 11500000, guid: 28527cfa68a9049d087e2d42ba11e455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  themeType: 0
-  themeTarget: 1
+  type: 0
+  colorizeLayer: 3
+  text: {fileID: 8339287954915742255}
+  image: {fileID: 0}
 --- !u!1 &6298178942634188219
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +165,7 @@ GameObject:
   - component: {fileID: 651874817053047134}
   - component: {fileID: 4391236159933290450}
   - component: {fileID: 8345532339083354251}
-  - component: {fileID: 3261723120163591550}
+  - component: {fileID: 5793203517591958707}
   m_Layer: 5
   m_Name: CellBuffer
   m_TagString: Untagged
@@ -220,7 +222,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1113249872, guid: 2f36c621f93de4fca99ee6974c5f630c, type: 3}
+  m_Sprite: {fileID: 2100388930, guid: 2f36c621f93de4fca99ee6974c5f630c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -256,7 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberText: {fileID: 8339287954915742255}
   canvasGroup: {fileID: 4391236159933290450}
---- !u!114 &3261723120163591550
+--- !u!114 &5793203517591958707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,8 +267,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6298178942634188219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b16d56891a57e40ad9e306725b1a65ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 28527cfa68a9049d087e2d42ba11e455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  themeType: 1
-  themeTarget: 3
+  type: 1
+  colorizeLayer: 0
+  text: {fileID: 0}
+  image: {fileID: 651874817053047134}

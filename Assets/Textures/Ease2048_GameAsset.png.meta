@@ -115,7 +115,7 @@ TextureImporter:
     compressionQuality: 100
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 1
+    overridden: 0
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -128,7 +128,7 @@ TextureImporter:
     compressionQuality: 100
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 1
+    overridden: 0
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -345,6 +345,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Border
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 2373
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 30, z: 30, w: 30}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a77398ccdeb44464b331320c8bb917d
+      internalID: -349418092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 1979
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 30, z: 30, w: 30}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe410425c6d34b46ae874a8b823f797
+      internalID: 2100388930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Menu
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 127
+        width: 117
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdc79220e932b4b878a3931d6b23d107
+      internalID: -1819972577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Next
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 124
+        width: 117
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d153b2b81924c41e6ad16fa3a602da58
+      internalID: 1418176124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prev
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 127
+        width: 118
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fcec62cc00bb474c85f9f67dae0e812
+      internalID: -2053058727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -358,14 +463,19 @@ TextureImporter:
     nameFileIdTable:
       Back_Dark: 1163889250
       Back_Light: 1899930849
+      Border: -349418092
       Empty_Dark: -1861932473
       Empty_Light: 1037130383
+      Fill: 2100388930
       Fill_Dark: 677136635
       Fill_Light: 1113249872
+      Menu: -1819972577
       Menu_Dark: -286912865
       Menu_Light: -889923977
+      Next: 1418176124
       Next_Dark: 1542737284
       Next_Light: 1649412815
+      Prev: -2053058727
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

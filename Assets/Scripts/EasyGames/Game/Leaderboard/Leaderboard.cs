@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -15,8 +16,9 @@ namespace EasyGames
         [Title("Leaderboard")] 
         public TextMeshProUGUI[] leaderboardText;
         
-        private int _score;
+        private int _score = -1;
         private List<int> _leaderboardScore = new(5);
+        private Vector3 _scoreTweenScale = new Vector3(1.5f, 1.5f, 1);
         
         private const string _emptyLeaderboardString = "-";
 
@@ -25,8 +27,19 @@ namespace EasyGames
             get => _score;
             set
             {
+                var flag = _score == -1;
                 _score = value;
-                scoreText.SetText($"{value}");
+                if (flag)
+                {
+                    scoreText.SetText($"{value}");
+                    return;
+                }
+                scoreText.transform.DOKill();
+                scoreText.transform.DOScale(_scoreTweenScale, .08f)
+                    .From(Vector3.one)
+                    .SetLoops(2, LoopType.Yoyo)
+                    .SetEase(Ease.InOutQuad)
+                    .OnStepComplete(() => scoreText.SetText($"{value}"));
             }
         }
 

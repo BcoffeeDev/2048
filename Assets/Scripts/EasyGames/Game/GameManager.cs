@@ -43,7 +43,7 @@ namespace EasyGames
             // Load setting
             storage.Load(out StorageData_Setting settingData);
             setting.theme = settingData.theme;
-            setting.ApplyTheme();
+            setting.ApplyTheme(true, true);
             setting.SetSound(settingData.useSound);
             setting.SetVibrate(settingData.useVibrate);
 
@@ -102,7 +102,7 @@ namespace EasyGames
 
         #region Game
 
-        private void CreateGame()
+        public void CreateGame()
         {
             CreateGame(false);
         }
@@ -122,14 +122,14 @@ namespace EasyGames
             
             // SaveGame();
             
-            setting.ApplyTheme();
+            setting.ApplyTheme(true, true);
 
             _isCanNewGame = false;
         }
 
         private void GameOver()
         {
-            dialog.Show(DialogType.GameOver);
+            dialog.Show();
             leaderboard.ScoreToLeaderboard();
             SaveLeaderboard();
             
@@ -180,7 +180,6 @@ namespace EasyGames
                 Gesture.OnSwipeDown += gridBoard.MoveDown;
                 Gesture.OnSwipeLeft += gridBoard.MoveLeft;
                 Gesture.OnSwipeRight += gridBoard.MoveRight;
-                Gesture.OnTap += CreateGame;
             }
             else
             {
@@ -188,7 +187,6 @@ namespace EasyGames
                 Keyboard.DownKeyPressed += gridBoard.MoveDown;
                 Keyboard.LeftKeyPressed += gridBoard.MoveLeft;
                 Keyboard.RightKeyPressed += gridBoard.MoveRight;
-                Keyboard.SpaceKeyPressed += CreateGame;
             }
             
             // AddScore
@@ -215,6 +213,9 @@ namespace EasyGames
                 clickSound.Play();
                 clickVibrate.Play();
             };
+            
+            // Effect
+            GridBoard.OnCreateGridEffect += setting.ApplyTheme;
         }
 
         private void Disconnect()
@@ -249,6 +250,9 @@ namespace EasyGames
                 clickSound.Play();
                 clickVibrate.Play();
             };
+            
+            // Effect
+            GridBoard.OnCreateGridEffect -= setting.ApplyTheme;
         }
 
         #endregion

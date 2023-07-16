@@ -23,7 +23,7 @@ namespace EasyGames
         public bool useSound = true;
         public bool useVibrate = true;
 
-        private ThemeHandler[] _themeHandlers;
+        private CustomizeSource[] _customizeSources;
 
         #region Const
 
@@ -38,19 +38,8 @@ namespace EasyGames
         
         private void Awake()
         {
-            _themeHandlers = FindObjectsOfType<ThemeHandler>(true);
+            _customizeSources = FindObjectsOfType<CustomizeSource>(true);
         }
-
-        #region ReadOnly
-
-        private Color GetTextColor => settingProfile.GetThemeColor(theme, ThemeTarget.Text);
-        private Color GetBackgroundColor => settingProfile.GetThemeColor(theme, ThemeTarget.Background);
-        private Sprite GetGridSprite => settingProfile.GetThemeSprite(theme, ThemeTarget.Grid);
-        private Sprite GetCellSprite => settingProfile.GetThemeSprite(theme, ThemeTarget.Cell);
-
-        private Sprite GetMenuSprite => settingProfile.GetThemeSprite(theme, ThemeTarget.Menu);
-
-        #endregion
 
         #region Action
 
@@ -76,37 +65,15 @@ namespace EasyGames
         {
             if (forceTheme)
             {
-                _themeHandlers = FindObjectsOfType<ThemeHandler>(true);
+                _customizeSources = FindObjectsOfType<CustomizeSource>(true);
             }
 
-            for (int i = 0; i < _themeHandlers.Length; i++)
+            for (int i = 0; i < _customizeSources.Length; i++)
             {
-                var handler = _themeHandlers[i];
-                
-                if (handler.themeType is ThemeType.Color)
-                    switch (handler.themeTarget)
-                    {
-                        case ThemeTarget.Background:
-                            handler.ApplyTheme(GetBackgroundColor, instant);
-                            continue;
-                        case ThemeTarget.Text:
-                            handler.ApplyTheme(GetTextColor, instant);
-                            continue;
-                    }
-                
-                if (handler.themeType is ThemeType.Sprite)
-                    switch (handler.themeTarget)
-                    {
-                        case ThemeTarget.Grid:
-                            handler.ApplyTheme(GetGridSprite, instant);
-                            continue;
-                        case ThemeTarget.Cell:
-                            handler.ApplyTheme(GetCellSprite, instant);
-                            continue;
-                        case ThemeTarget.Menu:
-                            handler.ApplyTheme(GetMenuSprite, instant);
-                            continue;
-                    }
+                var source = _customizeSources[i];
+                var profile = settingProfile.ThemeProfile[theme];
+                source.SetProfile(profile);
+                source.Customize(instant);
             }
             
             themeText.SetText(theme is Theme.Light ? _lightThemeString : _darkThemeString);

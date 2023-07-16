@@ -16,28 +16,38 @@ MonoBehaviour:
   deleteDllAfterBuilds: 1
   AutomateForAllAOTPlatforms: 1
   automateForPlatforms: 090000000d000000
-  lastScan: 638250633783815870
+  lastScan: 638251510616037990
   supportSerializedTypes:
   - TypeName: UnityEngine.Color, UnityEngine.CoreModule
     IsCustom: 0
     Emit: 1
+  - TypeName: ColorizeLayer, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
   - TypeName: EasyGames.ControlType, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: EasyGames.CustomizeProfile, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[ColorizeLayer, Assembly-CSharp],[UnityEngine.Color,
+      UnityEngine.CoreModule]], mscorlib
     IsCustom: 0
     Emit: 1
   - TypeName: System.Collections.Generic.Dictionary`2[[EasyGames.SupportPlatform,
       Assembly-CSharp],[EasyGames.ControlType, Assembly-CSharp]], mscorlib
     IsCustom: 0
     Emit: 1
-  - TypeName: System.Collections.Generic.Dictionary`2[[EasyGames.Theme, Assembly-CSharp],[UnityEngine.Color,
-      UnityEngine.CoreModule]], mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Collections.Generic.Dictionary`2[[EasyGames.Theme, Assembly-CSharp],[UnityEngine.Sprite,
-      UnityEngine.CoreModule]], mscorlib
+  - TypeName: System.Collections.Generic.Dictionary`2[[EasyGames.Theme, Assembly-CSharp],[EasyGames.CustomizeProfile,
+      Assembly-CSharp]], mscorlib
     IsCustom: 0
     Emit: 1
   - TypeName: System.Collections.Generic.Dictionary`2[[EasyGames.UIPageType, Assembly-CSharp],[EasyGames.UIPage,
       Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.EnumEqualityComparer`1[[ColorizeLayer, Assembly-CSharp]],
+      mscorlib
     IsCustom: 0
     Emit: 1
   - TypeName: System.Collections.Generic.EnumEqualityComparer`1[[EasyGames.SupportPlatform,
@@ -55,6 +65,10 @@ MonoBehaviour:
   - TypeName: System.Single, mscorlib
     IsCustom: 0
     Emit: 1
+  - TypeName: System.Collections.Generic.IEqualityComparer`1[[ColorizeLayer, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
   - TypeName: System.Collections.Generic.IEqualityComparer`1[[EasyGames.SupportPlatform,
       Assembly-CSharp]], mscorlib
     IsCustom: 0
@@ -65,9 +79,6 @@ MonoBehaviour:
     Emit: 1
   - TypeName: System.Collections.Generic.IEqualityComparer`1[[EasyGames.UIPageType,
       Assembly-CSharp]], mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: UnityEngine.Sprite, UnityEngine.CoreModule
     IsCustom: 0
     Emit: 1
   - TypeName: EasyGames.SupportPlatform, Assembly-CSharp

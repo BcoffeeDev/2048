@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Coffee.UIExtensions;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -28,10 +29,15 @@ namespace EasyGames
         [Title("Tween Setting")]
         public float moveDuration;
         public Ease moveEase;
+
+        [Title("Effect")] 
+        public int prewarmAmount;
+        public UIParticle gridEffect;
         
         private List<GridCell> _gridCells = new();
         private List<GameObject> _gridBuffers = new();
         private List<CellBuffer> _cellBuffers = new();
+        private List<UIParticle> _gridEffectPool = new();
 
         #region Action
 
@@ -39,9 +45,17 @@ namespace EasyGames
         public static Action<int> OnMergeGrid;
         public static Action OnGridIsMove;
         public static Action OnGridCannotMove;
+        public static Action OnCreateGridEffect;
 
         #endregion
-        
+
+        private void Start()
+        {
+            PrewarmEffect();
+        }
+
+        #region Property
+
         public List<GridCell> GridCells
         {
             get => _gridCells;
@@ -51,6 +65,10 @@ namespace EasyGames
                 DrawGrid();
             }
         }
+
+        #endregion
+
+        #region Basic
 
         public void Clear()
         {
@@ -261,6 +279,10 @@ namespace EasyGames
         
             if (flag)
             {
+                var buffer = GetGridBuffer(grid.X, grid.Y);
+                var effect = GetGridEffect(buffer.transform);
+                effect.Play();
+                DOVirtual.DelayedCall(effect.particles[0].main.duration, () => PoolGridEffect(effect));
                 OnMergeGrid?.Invoke(grid.Value);
             }
         }
@@ -293,6 +315,8 @@ namespace EasyGames
 
             cellBufferGridLayout.enabled = true;
         }
+
+        #endregion
 
         #region Movement
 
@@ -570,5 +594,45 @@ namespace EasyGames
 
         #endregion
 
+        #region Effect
+
+        private void PrewarmEffect()
+        {
+            for (int i = 0; i < prewarmAmount; i++)
+            {
+                var effect =Instantiate(gridEffect, transform);
+                effect.gameObject.SetActive(false);
+            }
+            
+            OnCreateGridEffect?.Invoke();
+        }
+        
+        private UIParticle GetGridEffect(Transform parent)
+        {
+            if (_gridEffectPool.Count > 0)
+            {
+                var effectFromPool = _gridEffectPool[^1];
+                _gridEffectPool.Remove(effectFromPool);
+                var tmpTrans = effectFromPool.transform;
+                tmpTrans.SetParent(parent);
+                tmpTrans.localPosition = Vector3.zero;
+                effectFromPool.gameObject.SetActive(true);
+                return effectFromPool;
+            }
+
+            var effect = Instantiate(gridEffect, parent);
+            OnCreateGridEffect?.Invoke();
+            return effect;
+        }
+
+        private void PoolGridEffect(UIParticle effect)
+        {
+            effect.Stop();
+            effect.gameObject.SetActive(false);
+            effect.transform.SetParent(transform);
+            _gridEffectPool.Add(effect);
+        }
+
+        #endregion
     }
 }
