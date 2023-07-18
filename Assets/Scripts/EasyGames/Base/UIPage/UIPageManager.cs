@@ -23,20 +23,6 @@ namespace EasyGames
             }
         }
 
-        // public void ShowPage(UIPageType pageType, bool instant)
-        // {
-        //     if (!_pages.ContainsKey(pageType))
-        //         return;
-        //     _pages[pageType].Show(instant);
-        // }
-        //
-        // public void HidePage(UIPageType pageType, bool instant)
-        // {
-        //     if (!_pages.ContainsKey(pageType))
-        //         return;
-        //     _pages[pageType].Hide(instant);
-        // }
-
         public void ShowPageFocus(UIPageType pageType, bool instant)
         {
             foreach (var page in _pages)

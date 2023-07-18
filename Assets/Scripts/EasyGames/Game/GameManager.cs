@@ -70,10 +70,26 @@ namespace EasyGames
 
         public void Back()
         {
-            if (uIPageManager.LastPageType is UIPageType.Game)
-                OpenGame();
-            if (uIPageManager.LastPageType is UIPageType.MainMenu)
-                OpenMenu();
+            switch (uIPageManager.FocusPageType)
+            {
+                case UIPageType.MainMenu:
+                    Quit();
+                    break;
+                case UIPageType.Game:
+                    OpenSetting();
+                    break;
+                case UIPageType.Setting:
+                    if (uIPageManager.LastPageType is UIPageType.Game)
+                        OpenGame();
+                    else
+                        OpenMenu();
+                    break;
+                case UIPageType.Leaderboard:
+                    OpenMenu();
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void MainMenu()
@@ -115,7 +131,7 @@ namespace EasyGames
             gridBoard.Clear();
             gridBoard.CreateGrid();
             gridBoard.isActive = true;
-            
+
             leaderboard.Score = 0;
             
             dialog.Hide();
@@ -309,5 +325,28 @@ namespace EasyGames
         {
             resumeText.SetActive(StorageUtility.Exist(StoragePath.Game));
         }
+
+        #region Android
+
+#if UNITY_ANDROID || UNITY_EDITOR
+        private void Update()
+        {
+            if (!Input.GetKeyDown(KeyCode.Escape))
+                return;
+            Back();
+        }
+#endif
+
+        private void Quit()
+        {
+            clickSound.Play();
+            clickVibrate.Play();
+#if UNITY_EDITOR || UNITY_ANDROID
+            Application.Quit();
+            print("Quit.");
+#endif
+        }
+
+        #endregion
     }
 }

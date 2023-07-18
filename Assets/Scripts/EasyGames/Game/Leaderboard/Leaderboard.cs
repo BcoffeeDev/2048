@@ -27,7 +27,7 @@ namespace EasyGames
             get => _score;
             set
             {
-                var flag = _score == -1;
+                var flag = _score == -1 || (_score == 0 && value == 0);
                 _score = value;
                 if (flag)
                 {
