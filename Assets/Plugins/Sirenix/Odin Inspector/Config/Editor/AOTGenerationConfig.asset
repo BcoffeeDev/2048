@@ -16,7 +16,7 @@ MonoBehaviour:
   deleteDllAfterBuilds: 1
   AutomateForAllAOTPlatforms: 1
   automateForPlatforms: 090000000d000000
-  lastScan: 638252820499161650
+  lastScan: 638284860326274970
   supportSerializedTypes:
   - TypeName: UnityEngine.Color, UnityEngine.CoreModule
     IsCustom: 0
