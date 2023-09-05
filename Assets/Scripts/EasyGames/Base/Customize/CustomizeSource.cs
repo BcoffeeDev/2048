@@ -21,7 +21,7 @@ namespace EasyGames
         private Image image;
 
         [ShowIf("@type == CustomizeType.Particle"), SerializeField]
-        private ParticleSystem particleSystem;
+        private new ParticleSystem particleSystem;
 
         private CustomizeProfile _profile;
 

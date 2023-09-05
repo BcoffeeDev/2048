@@ -1,0 +1,99 @@
+{
+    "name": "GameInput",
+    "maps": [
+        {
+            "name": "Default",
+            "id": "e181f5f5-677a-44e1-b826-bfcdad263fb1",
+            "actions": [
+                {
+                    "name": "Any",
+                    "type": "Button",
+                    "id": "897109f3-06d2-4019-8a67-ccc67ef9743f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MultiTap",
+                    "type": "Button",
+                    "id": "cbd035b2-f1a0-49c0-9600-85bd07ebf0da",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0bded555-02a8-441c-8bc1-e28f60623f96",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "Any",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c8a26a5-a889-4564-b7b3-a0530ae6594f",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Any",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00a80ad2-5e34-4065-8c3d-8b45a826a213",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "MultiTap(tapCount=3)",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "MultiTap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "017f9603-c7be-4eec-82d6-b9ad77ed0b4f",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "MultiTap(tapCount=3)",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MultiTap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Touch",
+            "bindingGroup": "Touch",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
