@@ -9,12 +9,14 @@ namespace EasyGames
     {
         public bool useSound;
         public bool useVibrate;
+        public bool usePowerSaver;
         public Theme theme;
 
         public StorageData_Setting()
         {
             useSound = true;
             useVibrate = true;
+            usePowerSaver = false;
             theme = Theme.Light;
         }
     }

@@ -1,10 +1,11 @@
+using EasyGames.Pattern;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace EasyGames.Base.BatterySaver
 {
-    public class BatterySaver : MonoBehaviour
+    public class BatterySaver : SingletonPattern<BatterySaver>
     {
         public int fpsWhenBatterySaver = 10;
         public int timeForWait = 5;
@@ -12,7 +13,19 @@ namespace EasyGames.Base.BatterySaver
 
         private GameInput _gameInput;
 
+        private bool _enablePowerSaver;
+
         public bool IsBatterySaverActivated { get; private set; }
+
+        public bool EnablePowerSaver
+        {
+            get => _enablePowerSaver;
+            set
+            {
+                _enablePowerSaver = value;
+                SetBatterySaver(value);
+            }
+        }
         
         private void Awake()
         {
@@ -39,18 +52,17 @@ namespace EasyGames.Base.BatterySaver
 
         private void Start()
         {
-            Invoke(nameof(StartBatterySaver), timeForWait);
+            SetBatterySaver(true);
         }
 
         private void OnFingerDown(InputAction.CallbackContext context)
         {
-            CancelInvoke(nameof(StartBatterySaver));
-            StopBatterySaver();
+            SetBatterySaver(false);
         }
 
         private void OnFingerUp(InputAction.CallbackContext context)
         {
-            Invoke(nameof(StartBatterySaver), timeForWait);
+            SetBatterySaver(true);
         }
 
         private void OnMultiTap(InputAction.CallbackContext context)
@@ -60,26 +72,37 @@ namespace EasyGames.Base.BatterySaver
             fpsText.gameObject.SetActive(active);
         }
 
+        private void SetBatterySaver(bool value)
+        {
+            if (value)
+            {
+                if (!EnablePowerSaver) return;
+                CancelInvoke(nameof(StartBatterySaver));
+                Invoke(nameof(StartBatterySaver), timeForWait);
+            }
+            else
+            {
+                CancelInvoke(nameof(StartBatterySaver));
+                StopBatterySaver();
+            }
+        }
+
         private void StartBatterySaver()
         {
-#if UNITY_EDITOR
-            print("BatterySaver: On");
-#endif
             Application.targetFrameRate = fpsWhenBatterySaver;
             IsBatterySaverActivated = true;
         }
 
         private void StopBatterySaver()
         {
-#if UNITY_EDITOR
-            print("BatterySaver: Off");
-#endif
             Application.targetFrameRate = 120;
             IsBatterySaverActivated = false;
         }
 
         private void LateUpdate()
         {
+            if (!fpsText.gameObject.activeSelf)
+                return;
             fpsText.SetText($"{1f / Time.unscaledDeltaTime:0}");
         }
     }

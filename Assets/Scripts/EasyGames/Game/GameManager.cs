@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EasyGames.Base.BatterySaver;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -46,6 +47,7 @@ namespace EasyGames
             setting.ApplyTheme(true, true);
             setting.SetSound(settingData.useSound);
             setting.SetVibrate(settingData.useVibrate);
+            setting.SetPowerSaver(settingData.usePowerSaver);
 
             // Load score
             storage.Load(out StorageData_Leaderboard leaderboardData);
@@ -176,6 +178,7 @@ namespace EasyGames
             var settingFile = new StorageData_Setting();
             settingFile.useSound = setting.useSound;
             settingFile.useVibrate = setting.useVibrate;
+            settingFile.usePowerSaver = setting.usePowerSaver;
             settingFile.theme = setting.theme;
             storage.Save(settingFile);
         }
@@ -218,6 +221,7 @@ namespace EasyGames
             Setting.OnSettingChange += SaveSetting;
             Setting.OnSoundChange += useSound => soundManager.UseSound = useSound;
             Setting.OnVibrateChange += useVibrate => vibrationManager.UseVibrate = useVibrate;
+            Setting.OnPowerSaverChange += usePowerSaver => BatterySaver.Instance.EnablePowerSaver = usePowerSaver;
             
             // Feedbacks
             GridBoard.OnMergeGrid += _ => mergeSound.Play();
@@ -255,6 +259,7 @@ namespace EasyGames
             Setting.OnSettingChange -= SaveSetting;
             Setting.OnSoundChange -= useSound => soundManager.UseSound = useSound;
             Setting.OnVibrateChange -= useVibrate => vibrationManager.UseVibrate = useVibrate;
+            Setting.OnPowerSaverChange -= usePowerSaver => BatterySaver.Instance.EnablePowerSaver = usePowerSaver;
             
             // Feedbacks
             GridBoard.OnMergeGrid -= _ => mergeSound.Play();

@@ -14,6 +14,7 @@ namespace EasyGames
         public TextMeshProUGUI vibrateText;
         public TextMeshProUGUI themeText;
         public TextMeshProUGUI versionText;
+        public TextMeshProUGUI powerSaverText;
 
         [Title("BaseSetting")]
         public SettingProfile settingProfile;
@@ -22,6 +23,7 @@ namespace EasyGames
         public Theme theme = Theme.Light;
         public bool useSound = true;
         public bool useVibrate = true;
+        public bool usePowerSaver = false;
 
         private CustomizeSource[] _customizeSources;
 
@@ -33,6 +35,8 @@ namespace EasyGames
         private const string _vibrateOffString = "Vibrate : OFF";
         private const string _lightThemeString = "Light Mode";
         private const string _darkThemeString = "Dark Mode";
+        private const string _powerSaverOnString = "Power Saver : ON";
+        private const string _powerSaverOffString = "Power Saver : OFF";
 
         #endregion
         
@@ -46,6 +50,7 @@ namespace EasyGames
         public static Action OnSettingChange;
         public static Action<bool> OnSoundChange;
         public static Action<bool> OnVibrateChange;
+        public static Action<bool> OnPowerSaverChange;
 
         #endregion
         
@@ -119,6 +124,21 @@ namespace EasyGames
             useVibrate = value;
             vibrateText.SetText(value ? _vibrateOnString : _vibrateOffString);
             OnVibrateChange?.Invoke(value);
+        }
+
+        public void TogglePowerSaver()
+        {
+            usePowerSaver = !usePowerSaver;
+            powerSaverText.SetText(usePowerSaver ? _powerSaverOnString : _powerSaverOffString);
+            OnPowerSaverChange?.Invoke(usePowerSaver);
+            OnSettingChange?.Invoke();
+        }
+
+        public void SetPowerSaver(bool value)
+        {
+            usePowerSaver = value;
+            powerSaverText.SetText(value ? _powerSaverOnString : _powerSaverOffString);
+            OnPowerSaverChange?.Invoke(value);
         }
     }
 }
